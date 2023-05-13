@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Roboto&family=Satisfy&display=swap');
+
+body{
+background: #625a5a;
+background: linear-gradient(0deg, rgba(98,90,90,1) 17%, rgba(62,53,53,1) 47%, rgba(98,90,90,1) 77%);
+color: black;
+font-family: 'Roboto', sans-serif;
+}
+header{
+    color: black;
+    background-color: rgb(147, 143, 143);
+}
+.sticky-top{
+    opacity: 0.9;
+    transition: ease-in;
+}
+h1{
+    font-family: 'Satisfy', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    color: black;
+    padding-top: 50px;
+}
+.navbar{
+    font-size: 1.15rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0.5rem 1rem rgba(0,0,0,0.15), inset 0 -1px 0 rgba(255,255,255,0.15);
+}
+.nav-link, .form-control{
+    --bs-nav-link-color: black; 
+}
+#carouselIndex{
+    margin-top: 120px;
+    margin-bottom: 100px;
+}
+#myCarousel, .carousel-image{
+    height: 600px;
+    width: 640px;    
+}
+.icon {
+    width: 55px;
+    height: 55px;
+    margin-top: 10px;
+} 
+.firma{
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    margin: 0px;
+    color: black;
+}
+footer{
+    background-color: rgb(147, 143, 143);
+	margin-top: 20px;
+}
+.footer-sub {
+    font-family: 'Roboto', sans-serif;
+	font-size: 1.15rem;
+	font-weight: bold;
+	text-align: center;
+    color: black;
+}
+.cajaHDobles{
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem;
+    display: grid;
+    flex-direction: row;
+}
+.imgHDobles{
+    width: 500px;
+    height: 375px;
+}
+#habitacionesDobles, #habitacionesMedianas, #habitacionesGrandes{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+#habitacionDeLujo{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+}
+p{
+    font-family: 'Roboto', sans-serif;
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: center;
+    color: black;
+    padding-top: 10px;
+}
+.hidden{
+    display: none;
+}
+#reservacionesDiv ::before{
+    content: "";
+    position: fixed;
+}
+#reservacionesDiv {
+    animation-name: animacion;
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+}
+@keyframes animacion {
+    0% {background-color: rgb(43, 43, 158);} 
+    50% {background-color: rgba(50, 160, 136, 0.863);} 
+    80% {background-color: rgb(94, 90, 93);}
+    100% {background-color: rgb(6, 6, 6);}
+}
+#contacto{
+    font-family: 'League Gothic', sans-serif;
+    font-size: 1.50rem;
+    color: white;
+}
+#checkin, #checkout{
+    font-family: 'League Gothic', sans-serif;
+    font-size: 1rem;
+    border: solid 1px white;
+    width: 110px;
+    height: 26px;
+}
+#btnR{
+    font-family: 'League Gothic', sans-serif;
+    font-size: 1.40rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    width: 70px;
+    height: 70px;
+    background: none;
+    border: solid 1px white;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+#registroItem{
+    font-family: 'League Gothic', sans-serif;
+    font-size: 1.50rem;
+    color: rgb(145, 62, 62);
+    display: flex;
+    justify-content: space-evenly;
+}
+.h-bn-forms{
+    display: flex;
+    justify-content: space-between;
+}
+#calendarios{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 70px;
+    column-gap: 65px;
+}
+.fas::after {
+    content: "\f783";
+    color: white;
+    border: solid 1px white;
+    width: 35px;
+    justify-content: center;
+}
+.datepicker, table, tr, td{
+    background-color: white;
+    font-size: 14px;
+    text-align: center;
+    color: black;
+    border-radius: 4px;
+    width: 200px;
+    height: 35px;
+}
+.datepicker{
+    position: fixed;
+    bottom: 68px;
+    top: unset;
+    padding: 4px;
+    border: 1px;
+}
+.datepicker-dropdown{
+    z-index: 1000;
+}
+
+thead{
+    display: table-header-group;
+    vertical-align: middle;
+}
+tbody{
+    display: table-row-group;
+    vertical-align: middle;
+}
+tfoot{
+    display: table-footer-group;
+    vertical-align: middle;
+}
