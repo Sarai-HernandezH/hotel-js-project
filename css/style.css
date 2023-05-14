@@ -16,9 +16,9 @@ header{
     opacity: 0.9;
     transition: ease-in;
 }
-h1{
+.titulo{
     font-family: 'Satisfy', cursive;
-    font-size: 2.5rem;
+    font-size: 4rem;
     text-align: center;
     color: black;
     padding-top: 50px;
@@ -71,29 +71,43 @@ footer{
     display: grid;
     flex-direction: row;
 }
-.imgHDobles{
-    width: 500px;
-    height: 375px;
-}
-#habitacionesDobles, #habitacionesMedianas, #habitacionesGrandes{
-    margin-top: 100px;
-    margin-bottom: 100px;
+.imgH{
+    width: 475px;
+    height: 350px;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
 }
-#habitacionDeLujo{
-    margin-top: 100px;
+.card-group{
     margin-bottom: 100px;
-    display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    row-gap: 600px;
+}
+#habitacionLujo{
+    height: 730px;
+    padding-bottom: 300px;
+}
+.habitaciones-t{
+    height: 730px;
 }
 p{
     font-family: 'Roboto', sans-serif;
 	font-size: 1rem;
 	font-weight: bold;
 	text-align: center;
-    color: black;
+    color: white;
     padding-top: 10px;
+}
+#btnD, #btnM, #btnG, #btnL{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(93, 93, 197);
+    border: 3px solid rgb(93, 93, 197);
+}
+#btnRLujo, #btnRGrande, #btnRMediana, #btnRDoble{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
 }
 .hidden{
     display: none;
@@ -193,4 +207,17 @@ tbody{
 tfoot{
     display: table-footer-group;
     vertical-align: middle;
+}
+.descripcionT{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+.descripcion{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    text-align: start;
+    color: white;
 }

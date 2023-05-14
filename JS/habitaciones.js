@@ -1,19 +1,48 @@
+const IVA = 1.25
+class Huesped{
+    constructor(nombre, apellido, dni){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+    }
+}
+const arrayHuespedes = [];
+class Promociones {
+    constructor(ocasion, descuento, esLunaDeMiel = false) {
+        this.ocasion = ocasion;
+        this.descuento = descuento;
+        this.esLunaDeMiel = esLunaDeMiel;
+    }
+}
+const lunaDeMiel = new Promociones("Luna de Miel", 20, true);
+const masDeCincoDias = new Promociones("Más de cinco días de estadia", 5);
+const masDeQuinceDias = new Promociones("Más de quince días de estadia", 10);
+const arrayPromociones = [];
+
+arrayPromociones.push(lunaDeMiel);
+arrayPromociones.push(masDeCincoDias);
+arrayPromociones.push(masDeQuinceDias);
+
+console.log("Promociones disponibles: ");
+console.log(arrayPromociones);
+
 class Habitacion{
-    constructor(nombre, capacidad, precio, imagen){
+    constructor(nombre, capacidad, precio, imagen, descripcion){
         this.nombre = nombre;
         this.capacidad = capacidad;
         this.precio = Math.round(precio);
         this.imagen = imagen;
+        this.descripcion = descripcion
     }
 }
 
-const habitacionSencilla = new Habitacion ("Habitacion Simple Doble", "Dos personas", 150, "../img/habitacion-d-simple.jpg");
-const habitacionSencillaDeluxe = new Habitacion ("Habitacion Deluxe Doble", "Dos personas", 200, "../img/habitacion-d-deluxe.jpg");
-const habitacionMediana = new Habitacion ("Habitacion Mediana", "Cuatro personas", 300, "../img/mediana-s.jpg");
-const habitacionMedianaDeluxe = new Habitacion ("Habitacion Mediana Deluxe", "Cuatro personas", 350, "../img/mediana-d.jpg");
-const habitacionGrande = new Habitacion ("Habitacion Grande", "Seis personas", 400, "../img/habitacion-g-s.jpg");
-const habitacionGrandeDeluxe = new Habitacion ("Habitaciones Grande Deluxe", "Seis personas", 450, "../img/habitacion-g-d.jpg");
-const suiteEspecial = new Habitacion ("Suite Especial", "Cuatro personas", 700, "../img/habitacion-lujosa.jpg");
+const habitacionSencilla = new Habitacion ("Habitacion Simple Doble","Dos personas", 150, "../img/habitacion-d-simple.jpg", " - 2 Camas individuales. <br> - Baño con amplia ducha. <br> -Aire acondicionado. <br> - Acceso a areas comunes" );
+const habitacionSencillaDeluxe = new Habitacion ("Habitacion Deluxe Doble", "Dos personas", 200, "../img/habitacion-d-deluxe.jpg", " - 1 Cama matrimonial. <br> - Baño con bañera con capacidad para dos personas. <br> - Aire acondicionado. <br> -Acceso a las areas comunes <br> - Desayuno incluido y spa.");
+const habitacionMediana = new Habitacion ("Habitacion Mediana", "Cuatro personas", 300, "../img/mediana-s.jpg", "- 4 camas indivuales. <br> -Baño amplio. <br> - Bañera apta para una persona. <br> - Aire acondicionado. <br> - Acceso a areas comunes.");
+const habitacionMedianaDeluxe = new Habitacion ("Habitacion Mediana Deluxe", "Cuatro personas", 350, "../img/mediana-d.jpg", " - 1 Cama matrimonial. <br> - Dos camas individuales. <br> - Baño amplio. <br> - Bañera con capacidad para dos personas. <br> - Aire acondicionado. <br> - Desayuno incluido. <br> - Acceso a areas comunes y spa." );
+const habitacionGrande = new Habitacion ("Habitacion Grande", "Seis personas", 400, "../img/habitacion-g-s.jpg", "- 2 camas individuales. <br> - 1 cama matrimonial. <br> - 1 sofa cama de dos plazas. <br> - Cocinada equipada <br> - Baño amplio. <br> - Bañera con capacidad para dos personas. <br> - Aire acondicionado. <br> - Acceso a areas comunes.");
+const habitacionGrandeDeluxe = new Habitacion ("Habitaciones Grande Deluxe", "Seis personas", 450, "../img/habitacion-g-d.jpg", "- 3 Camas matrimoniales divididas en cuartos diferentes. <br> - Cocinada equipada.  <br> - Baño amplio.  <br> - Jacuzzi con capacidad para seis personas. <br> - Aire acondicionado. <br> - Desayuno incluido. <br> - Acceso a areas comunes y spa.");
+const suiteEspecial = new Habitacion ("Suite Especial", "Cuatro personas", 700, "../img/habitacion-lujosa.jpg", " - 1 cama Queen. <br> - 1 Sofa cama de lujo de dos plazas. <br> - Baño con jacuzzi de lujo con capacidad para cuatro personas. <br> - Sauna. <br> - Balcon con salida a piscina privada. <br> - Desayuno a la habitacion incluido. <br> - Acceso a areas comunes y spa privado.");
 const arrayHabitaciones = [];
 
 arrayHabitaciones.push(habitacionSencilla);
@@ -32,10 +61,23 @@ const dobles = document.getElementById("habitacionesDobles");
 arrayHabitaciones.slice(0, 2).forEach(habitacion => {
     const habitacionesDoblesDiv = document.createElement("div");
     habitacionesDoblesDiv.className = "cajaHdobles";
-    habitacionesDoblesDiv.innerHTML = `<img class="imgHDobles" src="${habitacion.imagen}" alt="${habitacion.nombre}">
-                                        <p>${habitacion.nombre} </p>
-                                        <p>Precio por noche ${habitacion.precio} $</p>
-                                        <button> Reserva Ahora </button>`;
+    habitacionesDoblesDiv.innerHTML = ` <div class="habitaciones-t">
+                                            <p>
+                                                <a name="habitacionesDobles" class="btn" id="btnD" href="#multi-collapse-habitaciones-Dobles" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="multi-collapse-habitaciones-Dobles">
+                                                    ${habitacion.nombre}
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="multi-collapse-habitaciones-Dobles">
+                                                <div class="card card-body bg-dark disc-card" id="habitacionesDobles">
+                                                    <img class="imgH" src="${habitacion.imagen}" alt="${habitacion.nombre}">
+                                                    <h2 class="descripcionT">${habitacion.nombre} </h2>                           
+                                                    <h3 class="descripcionT">Descripcion:</h3>
+                                                    <h4 class="descripcion">${habitacion.descripcion}</h4>
+                                                    <p>Precio por noche ${habitacion.precio} $</p>
+                                                    <button class="btn btn-outline-light btnReserva" id="btnRDoble"> Reserva Ahora </button>
+                                                </div>
+                                            </div>
+                                        </div>`;
     dobles.appendChild(habitacionesDoblesDiv);
 });
 
@@ -44,10 +86,23 @@ const medianas = document.getElementById("habitacionesMedianas");
 arrayHabitaciones.slice(2, 4).forEach(habitacion => {
     const habitacionesMedianasDiv = document.createElement("div");
     habitacionesMedianasDiv.className = "cajaHdobles";
-    habitacionesMedianasDiv.innerHTML = `<img class="imgHDobles" src="${habitacion.imagen}" alt="${habitacion.nombre}">
-                                        <p>${habitacion.nombre} </p>
-                                        <p>Precio por noche ${habitacion.precio} $</p>
-                                        <button> Reserva Ahora </button>`;
+    habitacionesMedianasDiv.innerHTML = `<div class="habitaciones-t">
+                                            <p>
+                                                <a class="btn" id="btnM" href="#multi-collapse-habitaciones-Medianas" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="multi-collapse-habitaciones-Medianas">
+                                                    ${habitacion.nombre}
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="multi-collapse-habitaciones-Medianas">
+                                                <div class="card card-body bg-dark disc-card" id="habitacionesMedianas">
+                                                    <img class="imgH" src="${habitacion.imagen}" alt="${habitacion.nombre}">
+                                                    <h2 class="descripcionT" >${habitacion.nombre} </h2>                           
+                                                    <h3 class="descripcionT">Descripcion:</h3>                                                                         
+                                                    <h4 class="descripcion">${habitacion.descripcion}</h4>
+                                                    <p>Precio por noche ${habitacion.precio} $</p>
+                                                    <button class="btn btn-outline-light btnReserva" id="btnRMediana"> Reserva Ahora </button>
+                                                </div>
+                                            </div>
+                                        </div>`;
     medianas.appendChild(habitacionesMedianasDiv);
 });
 
@@ -56,10 +111,23 @@ const grandes = document.getElementById("habitacionesGrandes");
 arrayHabitaciones.slice(4, 6).forEach(habitacion => {
     const habitacionesGrandesDiv = document.createElement("div");
     habitacionesGrandesDiv.className = "cajaHdobles";
-    habitacionesGrandesDiv.innerHTML = `<img class="imgHDobles" src="${habitacion.imagen}" alt="${habitacion.nombre}">
-                                        <p>${habitacion.nombre} </p>
-                                        <p>Precio por noche ${habitacion.precio} $</p>
-                                        <button> Reserva Ahora </button>`;
+    habitacionesGrandesDiv.innerHTML = `<div class="habitaciones-t">
+                                            <p>
+                                                <a name="habitacionesGrandes" class="btn" id="btnG" href="#multi-collapse-habitaciones-Grandes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="multi-collapse-habitaciones-Grandes">
+                                                    ${habitacion.nombre}
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="multi-collapse-habitaciones-Grandes">
+                                                <div class="card card-body bg-dark disc-card" id="habitacionesGrandes">
+                                                    <img class="imgH" src="${habitacion.imagen}" alt="${habitacion.nombre}">
+                                                    <h2 class="descripcionT" >${habitacion.nombre} </h2>
+                                                    <h3 class="descripcionT" >Descripcion:</h3>
+                                                    <h4 class="descripcion">${habitacion.descripcion}</h4>
+                                                    <p>Precio por noche ${habitacion.precio} $</p>
+                                                    <button class="btn btn-outline-light btnReserva" id="btnRGrande"> Reserva Ahora </button>
+                                                </div>
+                                            </div>
+                                        </div>`;
     grandes.appendChild(habitacionesGrandesDiv);
 });
 
@@ -68,13 +136,36 @@ const habitacion = arrayHabitaciones[6];
 
 const habitacionLujoDiv = document.createElement("div");
 habitacionLujoDiv.className = "cajaHdobles";
-habitacionLujoDiv.innerHTML = `<img class="imgHDobles" src="${habitacion.imagen}" alt="${habitacion.nombre}">
-                                    <p>${habitacion.nombre} </p>
-                                    <p>Precio por noche ${habitacion.precio} $</p>
-                                    <button> Reserva Ahora </button>`;
+habitacionLujoDiv.innerHTML = `<div class="habitaciones-t">
+                                    <p>
+                                        <a name="habitacionDeLujo" class="btn" id="btnL"  href="#multi-collapse-habitacion-Lujo" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="multi-collapse-habitacion-Lujo">
+                                            ${habitacion.nombre}
+                                        </a>
+                                    </p>
+                                    <div class="collapse" id="multi-collapse-habitacion-Lujo">
+                                        <div class="card card-body bg-dark disc-card" id="habitacionLujo">
+                                            <img class="imgH" src="${habitacion.imagen}" alt="${habitacion.nombre}">
+                                            <h2 class="descripcionT">${habitacion.nombre} </h2>
+                                            <h3 class="descripcionT">Descripcion:</h3> 
+                                            <h4 class="descripcion">${habitacion.descripcion}</h4>
+                                            <p>Precio por noche ${habitacion.precio} $</p>
+                                            <button class="btn btn-outline-light btnReserva" id="btnRLujo"> Reserva Ahora </button>
+                                        </div>
+                                    </div>
+                                </div>`;
 lujosa.appendChild(habitacionLujoDiv);
 
-const scrollDiv = document.getElementById("scrollDiv");
+arrayHabitaciones.forEach((habitacion, index) =>{
+    const btnReserva = habitacionesDiv.querySelector(".btnReserva");
+    btnReserva.addEventListener("click", () => {
+    formularioDeReserva(habitacion);
+    });
+});
+function formularioDeReserva(habitacion) {
+    // Create the form dynamically
+    const form = document.createElement("form");
+    form.innerHTML = ``
+}
 
 window.addEventListener('scroll', function() {
     const divScroll = window.scrollY;
@@ -83,7 +174,29 @@ window.addEventListener('scroll', function() {
     } else {
         scrollDiv.classList.add('hidden');
     }
-}); 
+    const doblesLink = document.querySelector('a[href="#habitacionesDobles"]');
+    doblesLink.addEventListener('click', scrollToSection);
+
+    const medianasLink = document.querySelector('a[href="#habitacionesMedianas"]');
+    medianasLink.addEventListener('click', scrollToSection);
+
+    const grandesLink = document.querySelector('a[href="#habitacionesGrandes"]');
+    grandesLink.addEventListener('click', scrollToSection);
+
+    const lujoLink = document.querySelector('a[href="#habitacionDeLujo"]');
+    lujoLink.addEventListener('click', scrollToSection);
+
+    function scrollToSection(event) {
+        event.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        const offset = target.offsetTop - 180; 
+        window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+        });
+    }
+});
+const scrollDiv = document.getElementById("scrollDiv");
 const scrollDivReservaciones = document.createElement("div");
 scrollDivReservaciones.innerHTML = `<div class=" container-fluid" id="reservacionesDiv">
                                         <div class="row" id="reservacionesOps">
@@ -112,13 +225,14 @@ scrollDivReservaciones.innerHTML = `<div class=" container-fluid" id="reservacio
                                                 </div>    
                                             </form>
                                         </div>
-                                    </div>`
+                                    </div>`;
+                                    
 
 scrollDiv.appendChild(scrollDivReservaciones);
 
 function mostrarCalendario(){
 const calendarContainer = document.getElementById("calendario");
-calendarContainer.innerHTML = `<div class="datepicker datepicker-dropdown dropdown-menu datepicket-orient-top d-block">
+calendarContainer.innerHTML = `<div class="datepicker datepicker-dropdown data-mdb-inline="true" dropdown-menu datepicket-orient-top d-block">
                                     <div class="datepicker-days d-block">
                                         <table class="table-condensed">
                                             <thead>
