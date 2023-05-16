@@ -15,27 +15,19 @@
         <nav class="navbar navbar-expand-lg bg-#625a5a ">
             <div class="container-fluid">
                 <a class="navbar-brand p-2 fs-5">Mil y una Noches</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown text-black" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav text-black" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-flex justify-content-end bs-black" id="navbarNavDropdown">
+                <div class="collapse navbar-collapse d-flex justify-content-end bs-black" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
                         </li>
-                        <li class="nav-item dropdown text-black">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Habitaciones disponibles
-                            </a>
-                            <ul class="dropdown-menu" id="habitacionesDropDown">
-                                <li><a class="dropdown-item card-link"  href="#habitacionesDobles">Habitaciones Dobles</a></li>
-                                <li><a class="dropdown-item card-link" href="#habitacionesMedianas">Habitaciones Medianas</a></li>
-                                <li><a class="dropdown-item card-link" href="#habitacionesGrandes">Habtiaciones Grandes</a></li>
-                                <li><a class="dropdown-item card-link" href="#habitacionDeLujo">Habtiación de Lujo</a></li>
-                            </ul>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./amenities.html">Amenities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./habitaciones.html">Habitaciones</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./galeria.html">Galeria</a>
@@ -44,7 +36,7 @@
                             <a class="nav-link" href="./contacto.html">Contacto</a>
                         </li>
                     </ul>
-                    <form class="d-flex p-2" role="search">
+                    <form class="d-flex p-2" role="search" id="buscador">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-dark" type="submit">Search</button>
                     </form>
@@ -55,13 +47,10 @@
 
     <h1 class="titulo">Habitaciones</h1>
 
-<div class="card-container" id="habitacionesContacines">
-    <div class="card-group" id="habitacionesDobles"></div>
-    <div class="card-group" id="habitacionesMedianas"></div>
-    <div class="card-group" id="habitacionesGrandes"></div>
-    <div class="card-group" id="habitacionDeLujo"></div>
-</div>
-
+    <div class="container" id="habitacionesContainer">
+        <div class="row" id="habitacionesRow"></div>
+    </div>
+    <div id="formContainer" class="hidden"></div>
 
     <div id="footer-clean">
         <footer>
@@ -85,9 +74,9 @@
         </footer>
     </div>
     <div id="scrollDiv" class="hidden sticky-bottom"></div>
+
     <script src="../JS/habitaciones.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </body>
 </html>

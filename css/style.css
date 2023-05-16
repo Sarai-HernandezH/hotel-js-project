@@ -64,27 +64,20 @@ footer{
 	text-align: center;
     color: black;
 }
-.cajaHDobles{
-    border: 1px solid black;
-    margin: 1rem;
-    padding: 1rem;
-    display: grid;
-    flex-direction: row;
-}
 .imgH{
-    width: 475px;
+    width:490px;
     height: 350px;
     display: flex;
     align-items: center;
 }
-.card-group{
-    margin-bottom: 100px;
-    justify-content: space-evenly;
-    row-gap: 600px;
+.habitacionesCard {
+    display: flex;
+    width: 450px !important;
+    margin: 40px;
 }
-#habitacionLujo{
-    height: 730px;
-    padding-bottom: 300px;
+#habitacionesRow{
+    margin-top: 60px;
+    justify-content: center;
 }
 .habitaciones-t{
     height: 730px;
@@ -97,20 +90,46 @@ p{
     color: white;
     padding-top: 10px;
 }
-#btnD, #btnM, #btnG, #btnL{
+#btnH{
     font-family: 'Roboto', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     text-decoration: none;
+    text-align: justify;
     color: rgb(93, 93, 197);
-    border: 3px solid rgb(93, 93, 197);
-}
-#btnRLujo, #btnRGrande, #btnRMediana, #btnRDoble{
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: bold;
 }
 .hidden{
     display: none;
+}
+#formContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.formField{
+    display: flex;
+}
+#formulario {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.30rem;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#promocion{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+#botoncerrar{
+    display: flex;
+    justify-content: flex-end;
 }
 #reservacionesDiv ::before{
     content: "";
@@ -218,6 +237,6 @@ tfoot{
 .descripcion{
     font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
-    text-align: start;
+    text-align: center;
     color: white;
 }
