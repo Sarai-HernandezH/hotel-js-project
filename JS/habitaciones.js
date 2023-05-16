@@ -163,7 +163,7 @@ const mostrarFormulario = (id, precio) => {
         let metodoPago = document.querySelector("#pagos").value;
         let nombreCompleto = document.getElementById("nombreCompleto").value;
         let email = document.getElementById("email").value;
-        let edad = parseInt(document.getElementById("validarEdad").value);
+        let edad = parseInt(document.getElementById("edad").value);
         let dni = parseInt(document.getElementById("dni").value);
 
 
