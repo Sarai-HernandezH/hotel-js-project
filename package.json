@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "air-datepicker": "^3.3.5",
+    "bower": "^1.8.14",
+    "nuget": "^2.0.2"
+  }
+}

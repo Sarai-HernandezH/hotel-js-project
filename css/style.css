@@ -23,7 +23,7 @@ header{
     color: black;
     padding-top: 50px;
 }
-.navbar{
+.navbar {
     font-size: 1.15rem;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
@@ -31,6 +31,8 @@ header{
     box-shadow: 0.5rem 1rem rgba(0,0,0,0.15), inset 0 -1px 0 rgba(255,255,255,0.15);
 }
 .nav-link, .form-control{
+    font-size: 1.15rem;
+    font-family: 'Roboto', sans-serif;
     --bs-nav-link-color: black; 
 }
 #carouselIndex{
@@ -100,17 +102,6 @@ p{
 .hidden{
     display: none;
 }
-#formContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: black;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
 .formField{
     display: flex;
 }
@@ -121,24 +112,45 @@ p{
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 150%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    vertical-align: center;
+    z-index: 1;
+    overflow: auto;
+    box-sizing: border-box;
 }
-#promocion{
+#formTitulos{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    text-decoration: underline;    
+}
+/*#promocion{
     width: 30px;
     height: 30px;
     margin-left: 10px;
-}
+}*/
 #botoncerrar{
     display: flex;
     justify-content: flex-end;
 }
-#reservacionesDiv ::before{
+#carouselNav ::before{
     content: "";
     position: fixed;
+    height: 100px !important;
 }
-#reservacionesDiv {
+#carouselNav {
     animation-name: animacion;
     animation-duration: 9s;
     animation-iteration-count: infinite;
+}
+.stickyCarousel{
+    width: 100%;
+    height: 100px;
+    opacity: .6;
 }
 @keyframes animacion {
     0% {background-color: rgb(43, 43, 158);} 
@@ -151,7 +163,7 @@ p{
     font-size: 1.50rem;
     color: white;
 }
-#checkin, #checkout{
+.checkin, .checkout{
     font-family: 'League Gothic', sans-serif;
     font-size: 1rem;
     border: solid 1px white;
@@ -170,63 +182,6 @@ p{
     border-radius: 50%;
     margin-bottom: 15px;
 }
-#registroItem{
-    font-family: 'League Gothic', sans-serif;
-    font-size: 1.50rem;
-    color: rgb(145, 62, 62);
-    display: flex;
-    justify-content: space-evenly;
-}
-.h-bn-forms{
-    display: flex;
-    justify-content: space-between;
-}
-#calendarios{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 70px;
-    column-gap: 65px;
-}
-.fas::after {
-    content: "\f783";
-    color: white;
-    border: solid 1px white;
-    width: 35px;
-    justify-content: center;
-}
-.datepicker, table, tr, td{
-    background-color: white;
-    font-size: 14px;
-    text-align: center;
-    color: black;
-    border-radius: 4px;
-    width: 200px;
-    height: 35px;
-}
-.datepicker{
-    position: fixed;
-    bottom: 68px;
-    top: unset;
-    padding: 4px;
-    border: 1px;
-}
-.datepicker-dropdown{
-    z-index: 1000;
-}
-
-thead{
-    display: table-header-group;
-    vertical-align: middle;
-}
-tbody{
-    display: table-row-group;
-    vertical-align: middle;
-}
-tfoot{
-    display: table-footer-group;
-    vertical-align: middle;
-}
 .descripcionT{
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
@@ -239,4 +194,24 @@ tfoot{
     font-size: 1.5rem;
     text-align: center;
     color: white;
+}
+.contacto{
+    font-family: 'Roboto', sans-serif;
+    padding-left: 200px;
+    padding-right: 200px;
+    color: white;
+}
+.formFecha{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.btnContacto{
+    margin: 25px;
+}
+legend{
+    font-family: 'Roboto', sans-serif;    
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 25px;
 }
