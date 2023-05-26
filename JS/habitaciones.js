@@ -15,9 +15,9 @@ class Promocion {
         this.descuento = descuento;
     }
 }
-const lunaDeMiel = new Promocion("Luna de Miel", 20, );
-const aniversario = new Promocion("Aniversario", 10);
-const viajeDeNegocios = new Promocion("Viaje de Negocios", 5);
+const lunaDeMiel = new Promocion("Luna de Miel", 25 );
+const aniversario = new Promocion("Aniversario", 15);
+const viajeDeNegocios = new Promocion("Viaje De Negocios", 10);
 
 const promocion = [lunaDeMiel, aniversario, viajeDeNegocios];
 
@@ -40,17 +40,16 @@ function mostrarHabitaciones() {
                 habitacionesCard.className = "col-sm-4 habitacionesCard";
                 habitacionesCard.innerHTML = `<div class="card mb-3 bg-dark">
                                             <p>
-                                                <a name="${habitacion.id}" class="btn" id="btnH" aria-expanded="false">
+                                                <a name="${habitacion.id}" id="btnH" aria-expanded="false">
                                                     ${habitacion.nombre}
                                                 </a>
                                             </p>
                                             <div class="card-body" id="habitacionesCards">
                                                 <div class="card-body bg-dark disc-card">
-                                                    <img class="card-img-top imgH" src="${habitacion.img}" alt="${habitacion.nombre}">
-                                                    <h2 class="card-tittle descripcionT">${habitacion.nombre} </h2>                           
-                                                    <h3 class="card-body descripcionT">Descripcion:</h3>
+                                                    <img class="card-img-top imgH mb-4" src="${habitacion.img}" alt="${habitacion.nombre}">                           
+                                                    <h3 class="card-tittle descripcionT mb-3">Descripcion:</h3>
                                                     <h4 class="card-text descripcion">${habitacion.descripcion}</h4>
-                                                    <p id="precio" class="card-text descripcion precio">Precio por noche ${habitacion.precio} $</p>
+                                                    <p id="precio" class="card-text descripcionT precio">Precio por noche ${habitacion.precio} $</p>
                                                     <button class="btn btn-outline-light" id="btnReserva${habitacion.id}"> Reserva Ahora </button>
                                                 </div>
                                             </div>
@@ -70,7 +69,12 @@ const formContainer = document.getElementById("formContainer");
 
 let costoEstadia = [];
 
+
 const mostrarFormulario = (id, precio) => {
+    const cards = document.querySelectorAll('.habitacionesCard');
+    cards.forEach(card => {
+        card.style.display = 'none';
+    });
     formContainer.classList.remove("hidden");
     let habitacion;
     let precioNoche;
@@ -81,24 +85,25 @@ const mostrarFormulario = (id, precio) => {
         precioNoche = Math.round(habitacion.precio);
         costoEstadia.push(precioNoche);
     }
+    
     const formularioHTML =`<div id="formularioContainer">
                                 <form id="formulario">
                                     <div>
                                         <h1 id="formTitulos">${habitacion.nombre} , ${habitacion.precio}$ por noche </h1>
                                             <div id="botoncerrar">
-                                                <button type="button" id="btnCerrar" class="btn btn-outline-secondary mb-3 botonCerrar" onclick="cerrarFormulario()" >Salir</button>
+                                                <button type="button" id="btnCerrar" class="btn btn-outline-secondary mb-3 botonCerrar" " >Salir</button>
                                             </div>
                                             <div class="mb-3 formField">
                                                 <label for="nombreCompleto" class="form-label">Nombre y Apellido</label>
-                                                <input type="text" class="form-control" id="nombreCompleto" required>
+                                                <input type="text" class="form-control" id="nombreCompleto" >
                                             </div>
-                                            <div class=" mb-3-md formFecha">
-                                                <label for="edad">Fecha de nacimiento (Debe ser mayor de 20 años para reservar)</label>
-                                                <input type="date" name="edad" id="edad" max="2003-01-01"">
+                                            <div class=" mb-3-md FormField">
+                                                <label for="edad">Edad (Debe ser mayor de 18 años para reservar)</label>
+                                                <input type="number" name="edad" id="edad">
                                             </div>
                                             <div class="mb-3 formField">
                                                 <label for="email" class="form-label">Correo Electrónico</label>
-                                                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
                                             </div>
                                             <div class="mb-3 formField">
                                                 <label for="dni" class="form-label">Numero de DNI</label>
@@ -106,27 +111,21 @@ const mostrarFormulario = (id, precio) => {
                                             </div>
                                             <div class="mb-3 formField">
                                                 <label for="diasEstadia" class="form-label">Cuantos días desea quedarse?</label>
-                                                <input type="number" class="form-control" id="diasEstadia">
+                                                <input type="number" class="form-control" id="diasEstadia" min="1" max="15">
                                             </div>
                                             <fieldset mb-3>
                                                 <legend mb-3">Es su estadia una ocasión especial? </legend>
-                                                    <div class="promocion mb-3">
-                                                        <input type="radio" name="promocion" value="Luna de Miel" id="lunaDeMiel">
-                                                        <label for="lunaDeMiel">
-                                                            Luna de miel
-                                                        </label>
+                                                    <div class="form-check promocion mb-3">
+                                                        <input class="form-check-input" type="radio" name="promocion" value="Luna de Miel" id="lunaDeMiel">
+                                                        <label class="form-check-label" for="lunaDeMiel">Luna de miel</label>
                                                     </div>
-                                                    <div class="promocion mb-3">
-                                                        <input type="radio" name="promocion" value="Aniversario" id="aniversario">
-                                                        <label for="aniversario">
-                                                            Aniversario
-                                                        </label>
+                                                    <div class="form-check promocion mb-3">
+                                                        <input class="form-check-input" type="radio" name="promocion" value="Aniversario" id="aniversario">
+                                                        <label class="form-check-label"  for="aniversario">Aniversario</label>
                                                     </div>
-                                                    <div class="promocion mb-3">
-                                                        <input type="radio" name="promocion" value="Viaje De Negocios" id="viajeDeNegocios">
-                                                        <label for="viajeDeNegocios">
-                                                            Viaje De Negocios
-                                                        </label>
+                                                    <div class="form-check promocion mb-3">
+                                                        <input class="form-check-input" type="radio" name="promocion" value="Viaje De Negocios" id="viajeDeNegocios">
+                                                        <label class="form-check-label"  for="viajeDeNegocios">Viaje De Negocios</label>
                                                     </div>
                                                 </fieldset>
                                                 <select class="form-select form-select-lg mb-3 formField" aria-label=".form-select-lg" id="pagos">
@@ -135,8 +134,8 @@ const mostrarFormulario = (id, precio) => {
                                                     <option value="2">Transferencia</option>
                                                     <option value="3">Paypal</option>
                                                 </select>
-                                                <div id="btnPagar" class="col-auto">
-                                                    <button class="btn btn-outline-secondary" type="submit" class="btn btn-dark reservar" id="btnPagar">Pagar</button>
+                                                <div class="col-auto">
+                                                    <button id="btnPagar" type="button" class="btn btn-outline-secondary">Pagar</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -144,16 +143,22 @@ const mostrarFormulario = (id, precio) => {
     formContainer.innerHTML = formularioHTML;
                         
     const selectedCard = document.getElementById(`btnReserva${id}`).closest(".habitacionesCard");
-    const formularioContainer = selectedCard.querySelector("#containerFormulario");
-    if (formularioContainer) {
-        selectedCard.replaceChild(formContainer, formularioContainer);
-    } else {
-        selectedCard.appendChild(formContainer);
+
+    if (selectedCard) {
+        selectedCard.style.display = 'none';
     }
+
     const formularioDeReservacion = document.getElementById("formulario");
-    formularioDeReservacion.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
+
+    // ACA HONESTAMENTE INTENTE DE TODO PERO SI USO SUBMIT EN LUGAR DE CLICK EL EVENTLISTENER DE BTNPAGAR DEJA DE FUNCIONAR
+    // AL USAR CLICK EN EL FORMULARIO LA CONSOLA RECARGA LA INFORMACION CADA VEZ QUE EL USUARIO AGREGA INFORMACION, NO ENCONTRE LA SOLUCION PARA ESTO
+    formularioDeReservacion.addEventListener("click", () => {
+
+        let totalCosto = 0;
+        let descuento = 0;
+        let promocionSeleccionada;
+        const IVA = 1.25;
+
         let diasEstadia = parseInt(document.getElementById("diasEstadia").value);
         let metodoPago = document.querySelector("#pagos").value;
         let nombreCompleto = document.getElementById("nombreCompleto").value;
@@ -161,10 +166,9 @@ const mostrarFormulario = (id, precio) => {
         let edad = parseInt(document.getElementById("edad").value);
         let dni = parseInt(document.getElementById("dni").value);
 
-
         const huesped = new Huesped(nombreCompleto, email, edad, dni, diasEstadia, metodoPago);
         arrayHuespedes.push(huesped);
-        
+
         localStorage.setItem("Nombre Completo", JSON.stringify(nombreCompleto));
         localStorage.setItem("Email", JSON.stringify(email));
         let nombreCompletoF = localStorage.getItem("Nombre Completo");
@@ -174,54 +178,84 @@ const mostrarFormulario = (id, precio) => {
         const emailFormJson = JSON.parse(emailForm);
         console.log(emailFormJson);
 
-        const calcularTotal = () => {
-            let totalCosto = 0;
-            let descuento = 0;
-            let promocionSeleccionada;
-            const IVA = 1.25;
+        if (habitacionSeleccionada) {
+            precioNoche = habitacionSeleccionada.precio;
+        }
 
-            if (habitacionSeleccionada) {
-                precioNoche = habitacionSeleccionada.precio;
-            } 
+        let precioNormal = (diasEstadia * Math.round(precioNoche)) * IVA;
+        const promoRadios = document.querySelectorAll('input[name="promocion"]');
 
-            let precioNormal = (diasEstadia * Math.round(precioNoche)) * IVA;
-            const promoRadios = document.querySelectorAll('input[name="promocion"]');
-            
-            for (const radio of promoRadios) {
-                if (radio.checked) {
-                    const promocionId = radio.value;
-                    promocionSeleccionada = promocion.find((promocion) => promocion.ocasion === promocionId);
-                    break;
-                }
+        for (const radio of promoRadios) {
+            if (radio.checked) {
+                const promocionId = radio.value;
+                promocionSeleccionada = promocion.find((promocion) => promocion.ocasion === promocionId);
+                break;
             }
-            if (promocionSeleccionada) {
-                descuento = Math.round(precioNormal) * (promocionSeleccionada.descuento / 100);
-            }
-            totalCosto = Math.round(precioNormal - descuento);
-
-            const botonPagar = document.getElementById("btnPagar");
-
-            botonPagar.addEventListener("submit", () =>{
+        }
+        if (promocionSeleccionada) {
+            descuento = Math.round(precioNormal) * (promocionSeleccionada.descuento / 100);
+        }
+        totalCosto = Math.round(precioNormal - descuento);
+        const numeroDeReserva = Math.floor(Math.random() * 9000000) + 1000000;
+        localStorage.setItem("Numero de Reserva", JSON.stringify(numeroDeReserva));
+        const numReserva = localStorage.getItem("Numero de Reserva");
+        const numReservaJson = JSON.parse(numReserva);
+        console.log(numReservaJson);
+        console.log(totalCosto + numeroDeReserva);
+        
+        const btnPagar = document.getElementById("btnPagar");
+        btnPagar.addEventListener("click", () => {
+            if (!nombreCompleto || !email || !edad || !dni || !diasEstadia || !metodoPago) {
                 Swal.fire({
-                    title: "Gracias por escogernos",
+                    title: "Error",
+                    text: "Por favor, completa todos los campos requeridos.",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
+                return;
+            } else {
+                Swal.fire({
+                    title: "Gracias por escogernos!",
                     text: "Para completar su reserva de click en continuar",
                     confirmButtonText: "Aceptar",
-                    html: `El total de su estadia es ${totalCosto}`,
-                    icon: 'success'
-                })
-            })
-            formularioDeReservacion.reset();
-    };
-
-    calcularTotal();
+                    denyButtonText: "Cancelar",
+                    showConfirmButton: true,
+                    showDenyButton: true,
+                    html: `${huesped.nombrecompleto} El total de su estadia es ${totalCosto}$.`,
+                    icon: "success"
+                }).then((resultado) => {
+                    if(resultado.isConfirmed){
+                        Swal.fire({
+                            title:"Disfrute su estadia!",
+                            html:`${huesped.nombrecompleto}. Su numero de reserva es ${numeroDeReserva}`,
+                            text:"Su habitación estará lista a partir de las 3:00pm",
+                            icon: "success",
+                            timer: 5000
+                        }).then(() => {
+                            location.reload(); 
+                        });
+                    } else if (resultado.isDenied) {
+                        Swal.fire({
+                        title: "Lamentamos su decisión, esperamos verle pronto",
+                        icon: "error",
+                        timer: 5000
+                    }).then(() => {
+                        location.reload(); 
+                    });
+                }
+            });
+        }
+        formularioDeReservacion.reset(); 
     });
-    
-};
+    });
+    const botonCerrar = document.getElementById("btnCerrar");
+    botonCerrar.addEventListener("click", () => {
+        formContainer.classList.add("hidden");
+        location.reload();
+    });
+}    
 
-function cerrarFormulario() {
-    const formContainer = document.getElementById("formContainer");
-    formContainer.innerHTML = "";
-};
+
 
 mostrarHabitaciones();
 
@@ -260,5 +294,4 @@ scrollDivReservaciones.innerHTML = `<div class=" container-fluid" id="carouselNa
                                     </div>`;
                                     
 scrollDiv.appendChild(scrollDivReservaciones);
-
 
